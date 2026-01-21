@@ -84,7 +84,16 @@ nav.dark .hamburger span {
   justify-content: center;
   padding-top: 60px;
   position: relative;
+  animation: zoomEffect 10s ease-in-out infinite;
+
 }
+
+@keyframes zoomEffect {
+  0% { background-size: 100%; }
+  50% { background-size: 110%; }
+  100% { background-size: 100%; }
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -107,6 +116,8 @@ nav.dark .hamburger span {
   max-width: 700px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
+
+
 .section {
   padding: 80px 20px;
   text-align: center;

@@ -11,6 +11,7 @@ require 'PHPMailer/src/SMTP.php';
 $nombre  = htmlspecialchars($_POST['nombre']);
 $email   = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $mensaje = htmlspecialchars($_POST['mensaje']);
+$celular = htmlspecialchars($_POST['celular']);
 
 $mail = new PHPMailer(true);
 
@@ -25,19 +26,20 @@ try {
     $mail->Port       = 465;
 
     // CORREO
-    $mail->setFrom('gerencia.general@jedastudiocode.com.co', 'JedaStudioCode - Formulario Web');
+    $mail->setFrom('gerencia.general@jedastudiocode.com.co', 'JedaStudioCode');
     $mail->addAddress('gerencia.general@jedastudiocode.com.co');
     $mail->addReplyTo($email, $nombre);
 
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
-    $mail->Subject = 'Nuevo mensaje desde la web';
+    $mail->Subject = 'Nuevo mensaje desde la web - Formulario Web';
 
     $mail->Body = "
         <h2>Nuevo contacto</h2>
         <p><strong>Nombre:</strong> {$nombre}</p>
         <p><strong>Email:</strong> {$email}</p>
         <p><strong>Mensaje:</strong><br>{$mensaje}</p>
+        <p><strong>Celular:</strong> {$celular}</p>
     ";
 
     $mail->send();
