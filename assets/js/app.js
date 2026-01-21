@@ -53,3 +53,23 @@ document.getElementById('whatsapp-form').addEventListener('submit', (e) => {
   document.getElementById('whatsapp-message').value = '';
   toggleWhatsApp();
 });
+
+// Auto-scroll to servicios section on page load (to show both inicio and servicios)
+window.addEventListener('load', () => {
+  // Make hero section visible immediately
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    heroSection.classList.add('show');
+  }
+
+  // Small delay to ensure all elements are rendered
+  setTimeout(() => {
+    const serviciosSection = document.getElementById('inicio');
+    if (serviciosSection) {
+      serviciosSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'end' 
+      });
+    }
+  }, 100);
+});
